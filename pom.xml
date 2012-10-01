@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.devworkz</groupId>
+	<artifactId>shopcart</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	<properties>
+		<!-- plugin, dependecy version -->
+		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+		<maven.eclipse.plugin.version></maven.eclipse.plugin.version>
+		<maven.surefire.plugin.version>2.12.4</maven.surefire.plugin.version>
+		<maven.war.plugin.version>2.1.1</maven.war.plugin.version>
+		
+		<bonecp.version>0.7.1.RELEASE</bonecp.version>
+		<cglib.version>2.2.2</cglib.version>
+		<hibernate.version>4.1.1.Final</hibernate.version>
+		<java.version>1.6</java.version>
+		<junit.version>4.8.1</junit.version>
+		<mockito.version>1.9.0</mockito.version>
+		<servlet.version>3.0.1</servlet.version>
+		<springframework.version>3.1.1.RELEASE</springframework.version>
+	</properties>
+	
+	<modules>
+		<module>shopcart-core</module>
+		<module>shopcart-web</module>
+	</modules>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven.surefire.plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>shopcart</groupId>
+				<artifactId>shopcart-core</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			
+			<!-- testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>  
+				<version>${mockito.version}</version> 
+				<scope>test</scope>
+			</dependency>
+			
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>  
+				<version>${springframework.version}</version> 
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>  
+				<version>${springframework.version}</version> 
+			</dependency>
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>  
+				<version>${cglib.version}</version> 
+				<scope>runtime</scope>
+			</dependency>
+			
+			<!-- hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entity-manager</artifactId>  
+				<version>${hibernate.version}</version> 
+			</dependency>
+			
+			
+			<!-- db pool -->
+			<dependency>
+				<groupId>com.jolbox</groupId>
+				<artifactId>bonecp</artifactId>
+				<version>${bonecp.version}</version>
+			</dependency>
+			
+			<!-- servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>  
+				<version>${servlet.version}</version> 
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
