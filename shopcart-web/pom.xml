@@ -36,7 +36,7 @@
 		
 	<dependencies>
 		<dependency>
-			<groupId>shopcart</groupId>
+			<groupId>com.devworkz</groupId>
 			<artifactId>shopcart-core</artifactId>
 		</dependency>
 	

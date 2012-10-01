@@ -13,12 +13,13 @@
 		<!-- plugin, dependecy version -->
 		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
 		<maven.eclipse.plugin.version></maven.eclipse.plugin.version>
+		<maven.jar.plugin.version>2.4</maven.jar.plugin.version>
 		<maven.surefire.plugin.version>2.12.4</maven.surefire.plugin.version>
 		<maven.war.plugin.version>2.1.1</maven.war.plugin.version>
 		
 		<bonecp.version>0.7.1.RELEASE</bonecp.version>
 		<cglib.version>2.2.2</cglib.version>
-		<hibernate.version>4.1.1.Final</hibernate.version>
+		<hibernate.version>4.1.7.Final</hibernate.version>
 		<java.version>1.6</java.version>
 		<junit.version>4.8.1</junit.version>
 		<mockito.version>1.9.0</mockito.version>
@@ -48,6 +49,11 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven.surefire.plugin.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven.jar.plugin.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -55,7 +61,7 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>shopcart</groupId>
+				<groupId>com.devworkz</groupId>
 				<artifactId>shopcart-core</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
@@ -95,7 +101,7 @@
 			<!-- hibernate -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-entity-manager</artifactId>  
+				<artifactId>hibernate-entitymanager</artifactId>  
 				<version>${hibernate.version}</version> 
 			</dependency>
 			
