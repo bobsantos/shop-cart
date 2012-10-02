@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="js/extjs/resources/css/ext-all.css" type="text/css" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" />
+	
+	<script type="text/javascript" src="js/extjs/ext-all.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var showLogin = function(){
+			var loginPanel = Ext.create('Ext.form.Panel',{
+				title: 'Sign in',
+				defaults: {
+					margin: '5px',
+					border: false
+				},
+				items: [{
+					xtype: 'textfield',
+					fieldLabel: 'Email',
+					name: 'email',
+					allowBlank: false
+				},{
+					xtype: 'textfield',
+					inputType: 'password',
+					fieldLabel: 'Password',
+					name: 'password',
+					allowBlank: false
+				},{
+					xtype: 'displayfield',
+					hideLabel: true,
+					name: 'loginFailed',
+					value: '',
+					baseCls: 'app-login-failed'
+				}],
+				buttons: [{
+					text: 'Sign in',
+					formBind: true,
+					action: 'signIn'
+				}]
+			});
+			
+			var viewPort = Ext.create('Ext.Viewport',{
+				layout: {
+					type: 'vbox',
+					align: 'center',
+					pack: 'center'
+				},
+				renderTo: Ext.getBody(),
+				items: [loginPanel]
+			});
+		};
+		
+		Ext.onReady(function(){
+			showLogin();
+		});
+	</script>
+</body>
+</html>
