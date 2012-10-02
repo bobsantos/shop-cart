@@ -3,11 +3,17 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
       version="3.0">
-     <!--  
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
--->
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+				/WEB-INF/classes/spring/security-config.xml
+		</param-value>
+	</context-param>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
@@ -30,6 +36,25 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- Security -->
+	<filter>
+		<filter-name>securityFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>springSecurityFilterChain</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- Handles all requests into the application -->
 	
 	<servlet>
@@ -38,7 +63,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/classes/spring/web-config.xml, /WEB-INF/classes/spring/app-config.xml <!--  , /WEB-INF/classes/spring/security-config.xml -->
+				/WEB-INF/classes/spring/web-config.xml, /WEB-INF/classes/spring/app-config.xml , /WEB-INF/classes/spring/security-config.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

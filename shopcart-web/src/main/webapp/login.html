@@ -37,7 +37,9 @@
 				buttons: [{
 					text: 'Sign in',
 					formBind: true,
-					action: 'signIn'
+					handler: function(){
+						var form = this.up('form').getForm();
+					}
 				}]
 			});
 			
