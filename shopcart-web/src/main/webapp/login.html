@@ -23,9 +23,9 @@
 					allowBlank: false
 				},{
 					xtype: 'textfield',
-					inputType: 'j_password',
+					inputType: 'password',
 					fieldLabel: 'Password',
-					name: 'password',
+					name: 'j_password',
 					allowBlank: false
 				},{
 					xtype: 'displayfield',
@@ -43,6 +43,7 @@
 							url: '/shopcart/j_spring_security_check',
 							success: function(form, action){
 								console.log('login success');
+								window.location = '/shopcart/index.html';
 							},
 							failure: function(form, action){
 								console.log('login fail');
