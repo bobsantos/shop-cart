@@ -13,7 +13,9 @@
 	
 	<import resource="classpath:/spring/data-config.xml"/>
 		
-	<context:component-scan base-package="com.devworkz.shopcart" />
+	<context:component-scan base-package="com.devworkz.shopcart">
+		<context:exclude-filter type="regex" expression="com\.devworkz\.shopcart\.controller\.*" />
+	</context:component-scan>
 	
 	<context:property-placeholder location="classpath:/properties/${app.env}/*.properties" />
 	
@@ -31,7 +33,7 @@
 	   <property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-	<jdbc:embedded-database id="dataSource" type="H2" />
+	<jdbc:embedded-database id="dataSource" type="HSQL" />
 	
 	<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
 	    <jdbc:script location="classpath:testdb/schema.sql" />

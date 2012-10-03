@@ -31,7 +31,7 @@
 	   <property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-	<jdbc:embedded-database id="dataSource" type="H2" />
+	<jdbc:embedded-database id="dataSource" type="HSQL" />
 	
 	<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
 	    <jdbc:script location="classpath:testdb/schema.sql" />

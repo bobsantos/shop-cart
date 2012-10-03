@@ -19,7 +19,7 @@ public class UserRepositoryIntegrationTest extends AbstractJUnit4SpringContextTe
 	@Test
 	public void shouldFindExistingUserByEmail(){
 		// given
-		String email = "test1@test.com";
+		String email = "admin@test.com";
 		
 		// when
 		List<User> users = repository.findByEmail(email);
