@@ -22,12 +22,9 @@ public class UserRepositoryIntegrationTest extends AbstractJUnit4SpringContextTe
 		String email = "admin@test.com";
 		
 		// when
-		List<User> users = repository.findByEmail(email);
+		User user = repository.findByEmail(email);
 		
 		// then
-		assertNotNull(users);
-		assertEquals(1, users.size());
-		User user = users.get(0);
 		assertNotNull(user);
 		assertEquals(email, user.getEmail());
 	}

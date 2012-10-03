@@ -6,19 +6,26 @@
       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
       http://www.springframework.org/schema/security
       http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+      <global-method-security pre-post-annotations="enabled" />
+
+      <http pattern="/resources" security="none" />
       
-      <http access-denied-page="/login.html">
-      	<intercept-url pattern="/index.html" access="ROLE_USER, ROLE_ADMIN" />
-      	<form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" login-processing-url="/j_security_check" />
+      <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+      <beans:bean id="loginSuccessHandler" class="com.devworkz.shopcart.security.LoginSuccessHandler" />
+      <beans:bean id="loginFailureHandler" class="com.devworkz.shopcart.security.LoginFailureHandler" />
+      
+      <http auto-config="true" use-expressions="true" access-denied-page="/login.html">
+      	<intercept-url pattern="/login.html" access="permitAll" />
+      	<intercept-url pattern="/index.html" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
+      	<form-login login-page="/login.html"
+      				authentication-success-handler-ref="loginSuccessHandler"
+      				authentication-failure-handler-ref="loginFailureHandler" />
       </http>
       
       <authentication-manager alias="authenticationManager">
-      	<authentication-provider>
-      		<password-encoder hash="sha" />
-      		<user-service>
-      			<user name="user" authorities="ROLE_USER" password="12dea96fec20593566ab75692c9949596833adc9" />
-      			<user name="admin" authorities="ROLE_ADMIN" password="d033e22ae348aeb5660fc2140aec35850c4da997" />
-      		</user-service>
+      	<authentication-provider user-service-ref="customUserDetailsService">
+      		<password-encoder ref="passwordEncoder" />	
       	</authentication-provider>      
       </authentication-manager>
 </beans:beans>

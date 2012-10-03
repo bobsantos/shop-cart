@@ -1,5 +1,5 @@
-INSERT INTO app_user(email, password) VALUES ('admin@test.com','admin');
-INSERT INTO app_user(email, password) VALUES ('user@test.com','user');
+INSERT INTO app_user(email, password) VALUES ('admin@test.com','5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO app_user(email, password) VALUES ('user@test.com','5f4dcc3b5aa765d61d8327deb882cf99');
 
 INSERT INTO app_user_role(role) VALUES ('ROLE_ADMIN');
 INSERT INTO app_user_role(role) VALUES ('ROLE_USER');

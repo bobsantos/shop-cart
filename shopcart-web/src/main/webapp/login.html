@@ -19,11 +19,11 @@
 				items: [{
 					xtype: 'textfield',
 					fieldLabel: 'Email',
-					name: 'email',
+					name: 'j_username',
 					allowBlank: false
 				},{
 					xtype: 'textfield',
-					inputType: 'password',
+					inputType: 'j_password',
 					fieldLabel: 'Password',
 					name: 'password',
 					allowBlank: false
@@ -39,6 +39,15 @@
 					formBind: true,
 					handler: function(){
 						var form = this.up('form').getForm();
+						form.submit({
+							url: '/shopcart/j_spring_security_check',
+							success: function(form, action){
+								console.log('login success');
+							},
+							failure: function(form, action){
+								console.log('login fail');
+							},
+						});
 					}
 				}]
 			});

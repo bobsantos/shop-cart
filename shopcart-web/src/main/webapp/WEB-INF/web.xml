@@ -10,6 +10,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
+				/WEB-INF/classes/spring/app-config.xml
 				/WEB-INF/classes/spring/security-config.xml
 		</param-value>
 	</context-param>
@@ -63,7 +64,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/classes/spring/web-config.xml, /WEB-INF/classes/spring/app-config.xml , /WEB-INF/classes/spring/security-config.xml
+				/WEB-INF/classes/spring/web-config.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
