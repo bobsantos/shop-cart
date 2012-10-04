@@ -1,10 +1,10 @@
-Ext.define('Mycrotyx.view.home.Home',{
+Ext.define('App.view.home.Home',{
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.home',
 	initComponent: function(){
 		var my = this;
 		
-		this.sidebar = Ext.create('Mycrotyx.view.home.Sidebar',{});
+		this.sidebar = Ext.create('App.view.home.Sidebar',{});
 		
 		Ext.apply(this,{
 			layout: 'border',

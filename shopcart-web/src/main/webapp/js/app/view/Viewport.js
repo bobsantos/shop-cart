@@ -1,38 +1,17 @@
-Ext.define('Mycrotyx.view.Viewport',{
+Ext.define('App.view.Viewport',{
 	extend: 'Ext.container.Viewport',
 	alias: 'widget.viewport',
-	layout: 'card',
+	layout: 'border',
 	border: false,
 	initComponent: function(){
-		Ext.apply(this,{
-			items: [{
-				xtype: 'login'
-			},{
-				xtype: 'home'
-			}]
-		});
-		
-		this.showCorrectView();
-		this.callParent(arguments);
-	},
-	
-	showCorrectView: function(){
 		var my = this;
 		
-		Ext.Ajax.request({
-			url: '/auth.html',
-			success: function(response, opts){
-				var obj = Ext.decode(response.responseText);
-				if(obj.success && obj.success == true){
-					my.getLayout().setActiveItem(1);
-				}
-			},
-			failure: function(response, opts){
-				var obj = Ext.decode(response.responseText);
-				if(obj.error){
-					my.getLayout().setActiveItem(0);
-				}
-			}
+		this.home = Ext.create('App.view.home.Home',{region: 'center'});
+		
+		Ext.apply(this,{
+			items: [my.home]
 		});
+		
+		this.callParent(arguments);
 	}
 });

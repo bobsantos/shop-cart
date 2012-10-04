@@ -1,4 +1,4 @@
-Ext.define('Mycrotyx.view.home.Sidebar',{
+Ext.define('App.view.home.Sidebar',{
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.sidebar',
 	initComponent: function(){
