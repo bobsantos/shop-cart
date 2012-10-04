@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
 @Entity
 @Table(name="app_user_role")
 public class UserRole {
@@ -18,15 +16,12 @@ public class UserRole {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonProperty
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
-	@JsonProperty
 	private UserRoleType role;
 	
 	@ManyToOne
-	@JsonProperty
 	private User user;
 	
 	public Long getId() {
