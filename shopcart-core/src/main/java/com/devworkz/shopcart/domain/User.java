@@ -13,14 +13,18 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 @Entity
 @Table(name="app_user")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonProperty
 	private Long id;
 	
 	@Column
+	@JsonProperty
 	private String email;
 	
 	@Column
@@ -30,6 +34,7 @@ public class User {
 	@JoinTable(name="app_user_user_role", 
 		joinColumns={@JoinColumn(name="app_user_id")},
 		inverseJoinColumns={@JoinColumn(name="app_user_role_id")})
+	@JsonProperty
 	private Set<UserRole> roles;
 	
 	public Long getId() {

@@ -18,6 +18,7 @@
       <http auto-config="true" use-expressions="true" access-denied-page="/login.html">
       	<intercept-url pattern="/login.html" access="permitAll" />
       	<intercept-url pattern="/index.html" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
+      	<intercept-url pattern="/service/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
       	<form-login login-page="/login.html"
       				authentication-success-handler-ref="loginSuccessHandler"
       				authentication-failure-handler-ref="loginFailureHandler" />
