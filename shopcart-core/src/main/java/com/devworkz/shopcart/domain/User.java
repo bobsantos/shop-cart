@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @Entity
@@ -28,6 +29,7 @@ public class User {
 	private String email;
 	
 	@Column
+	@JsonIgnore
 	private String password;
 	
 	@OneToMany(cascade=CascadeType.ALL)

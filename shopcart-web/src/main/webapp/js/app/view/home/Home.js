@@ -19,5 +19,13 @@ Ext.define('App.view.home.Home',{
 		});
 		
 		this.callParent(arguments);
+		
+		Ext.Ajax.request({
+			url: '/shopcart/service/auth/user/',
+			callback: function(options, success, response){
+				var json = Ext.decode(response.responseText);
+				console.log(json);
+			}
+		});
 	}
 });

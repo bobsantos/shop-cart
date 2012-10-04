@@ -1,9 +1,5 @@
 package com.devworkz.shopcart.controller;
 
-import java.security.Principal;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,8 +19,8 @@ public class SecurityController {
 	
 	@RequestMapping(value="user", method=RequestMethod.GET)
 	public @ResponseBody User getAuthenticatedUser(){
-		UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = userRepository.findByEmail(principal.getUsername());
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		User user = userRepository.findByEmail(username);
 		return user;
 	}
 	
