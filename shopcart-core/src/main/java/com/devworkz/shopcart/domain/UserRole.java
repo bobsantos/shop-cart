@@ -9,8 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="app_user_role")
+@JsonAutoDetect
 public class UserRole {
 	public enum UserRoleType { ROLE_USER, ROLE_ADMIN };
 	
@@ -22,6 +26,7 @@ public class UserRole {
 	private UserRoleType role;
 	
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 	
 	public Long getId() {

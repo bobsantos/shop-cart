@@ -74,6 +74,4 @@
 		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
 		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
-
-
 </web-app>
